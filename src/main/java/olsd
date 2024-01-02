@@ -1,0 +1,92 @@
+//package ru.netology.Radio.service;
+//
+//public class Radio {
+//    private int numberStation = 10;
+//    private int maxStation = 9;
+//
+//    public Radio(int numberStation) {
+//        this.numberStation = numberStation;
+//        this.maxStation = numberStation - 1;
+//    }
+//
+//    public Radio() {
+//        this.maxStation = numberStation - 1;
+//    }
+//
+//    public int currentStation;
+//    public int currentVolume;
+//
+//    public void getMinStation() {
+//        currentStation = 0;
+//    }
+//
+//    public void getMaxStation() {
+//        currentStation = 9;
+//    }
+//
+//    public void setMaxStation(int newMaxStation) {
+//        currentStation = newMaxStation;
+//    }
+//
+//    public void getMaxVolume() {
+//        currentVolume = 100;
+//    }
+//
+//    public void getMinVolume() {
+//        currentVolume = 0;
+//    }
+//
+//
+//    public int getCurrentStation() {
+//        return currentStation;
+//    }
+//
+//    public void setCurrentStation(int newCurrentStation) {
+//        if (newCurrentStation > 9) {
+//            return;
+//        }
+//        if (newCurrentStation < 0) {
+//            return;
+//        }
+//        currentStation = newCurrentStation;
+//    }
+//
+//    public int getCurrentVolume() {
+//        return currentVolume;
+//    }
+//
+//    public void setCurrentVolume(int newCurrentVolume) {
+//        if (newCurrentVolume > 100) {
+//            return;
+//        }
+//        if (newCurrentVolume < 0) {
+//            return;
+//        }
+//        currentVolume = newCurrentVolume;
+//    }
+//
+//
+//    public int nextStation() {
+//        currentStation = currentStation < 9 ? currentStation + 1 : 0;
+//        return currentStation;
+//    }
+//
+//    public int prevStation() {
+//        currentStation = currentStation > 0 ? currentStation - 1 : 9;
+//        return currentStation;
+//    }
+//
+//    public int increaseVolume() {
+//        if (currentVolume < 100) {
+//            currentVolume++;
+//        }
+//        return currentVolume;
+//    }
+//
+//    public int decreaseVolume() {
+//        if (currentVolume > 0) {
+//            currentVolume--;
+//        }
+//        return currentVolume;
+//    }
+//}
