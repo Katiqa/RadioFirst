@@ -4,13 +4,50 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+    Radio radio = new Radio();
+
     @Test
     public void SetStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(20);
 
-        radio.setCurrentStation(6);
+        radio.setCurrentStation(18);
 
-        int expected = 6;
+        int expected = 18;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void NextStationLimitNew() {
+        Radio radio = new Radio(20);
+        radio.setCurrentStation(19);
+
+        radio.nextStation();
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void PrevStationAlmostLimitNew() {
+        Radio radio = new Radio(25);
+        radio.setCurrentStation(0);
+
+        radio.prevStation();
+
+        int expected = 24;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void SetStationWithoutParameter() {
+
+        radio.setCurrentStation(18);
+
+        int expected = 0;
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -18,7 +55,6 @@ public class RadioTest {
 
     @Test
     public void LowMinStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(-1);
 
@@ -30,7 +66,6 @@ public class RadioTest {
 
     @Test
     public void AboveMaxStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(10);
 
@@ -42,7 +77,6 @@ public class RadioTest {
 
     @Test
     public void MaxStationLimit() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(12);
 
@@ -54,7 +88,6 @@ public class RadioTest {
 
     @Test
     public void MinStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(0);
 
@@ -66,7 +99,6 @@ public class RadioTest {
 
     @Test
     public void AboveMinStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(1);
 
@@ -78,7 +110,6 @@ public class RadioTest {
 
     @Test
     public void MaxStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(9);
 
@@ -90,7 +121,6 @@ public class RadioTest {
 
     @Test
     public void LowMaxStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(8);
 
@@ -102,7 +132,6 @@ public class RadioTest {
 
     @Test
     public void OverMinStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(-5);
 
@@ -114,7 +143,6 @@ public class RadioTest {
 
     @Test
     public void NextStationNormal() {
-        Radio radio = new Radio();
         radio.setCurrentStation(5);
 
         radio.nextStation();
@@ -126,7 +154,6 @@ public class RadioTest {
 
     @Test
     public void NextStationAlmostLimit() {
-        Radio radio = new Radio();
         radio.setCurrentStation(8);
 
         radio.nextStation();
@@ -138,7 +165,6 @@ public class RadioTest {
 
     @Test
     public void NextStationLimit() {
-        Radio radio = new Radio();
         radio.setCurrentStation(9);
 
         radio.nextStation();
@@ -150,7 +176,6 @@ public class RadioTest {
 
     @Test
     public void PrevStationNormal() {
-        Radio radio = new Radio();
         radio.setCurrentStation(6);
 
         radio.prevStation();
@@ -162,7 +187,6 @@ public class RadioTest {
 
     @Test
     public void PrevStationAlmostLimit() {
-        Radio radio = new Radio();
         radio.setCurrentStation(1);
 
         radio.prevStation();
@@ -174,7 +198,6 @@ public class RadioTest {
 
     @Test
     public void PrevStationLimit() {
-        Radio radio = new Radio();
         radio.setCurrentStation(0);
 
         radio.prevStation();
@@ -186,7 +209,6 @@ public class RadioTest {
 
     @Test
     public void SetCurrentVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(63);
 
@@ -197,7 +219,6 @@ public class RadioTest {
 
     @Test
     public void SetMinVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(0);
 
@@ -208,7 +229,6 @@ public class RadioTest {
 
     @Test
     public void SetAlmostMinVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(1);
 
@@ -219,7 +239,6 @@ public class RadioTest {
 
     @Test
     public void SetMaxVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(100);
 
@@ -230,7 +249,6 @@ public class RadioTest {
 
     @Test
     public void SetAlmostMaxVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(99);
 
@@ -241,7 +259,6 @@ public class RadioTest {
 
     @Test
     public void SetAboveMaxVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(101);
 
@@ -252,7 +269,6 @@ public class RadioTest {
 
     @Test
     public void SetOverMinVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(-5);
 
@@ -263,7 +279,6 @@ public class RadioTest {
 
     @Test
     public void SetAlmostOverMinVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(-1);
 
@@ -274,7 +289,6 @@ public class RadioTest {
 
     @Test
     public void IncreaseVolume() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(56);
 
         radio.increaseVolume();
@@ -287,7 +301,6 @@ public class RadioTest {
 
     @Test
     public void IncreaseVolumeMin() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(0);
 
         radio.increaseVolume();
@@ -300,7 +313,6 @@ public class RadioTest {
 
     @Test
     public void IncreaseVolumeMax() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(100);
 
         radio.increaseVolume();
@@ -313,7 +325,6 @@ public class RadioTest {
 
     @Test
     public void IncreaseVolumeAroundMax() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(99);
 
         radio.increaseVolume();
@@ -326,7 +337,6 @@ public class RadioTest {
 
     @Test
     public void IncreaseVolumeAroundMin() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(1);
 
         radio.increaseVolume();
@@ -341,7 +351,6 @@ public class RadioTest {
 
     @Test
     public void DecreaseVolume() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(43);
 
         radio.decreaseVolume();
@@ -354,7 +363,6 @@ public class RadioTest {
 
     @Test
     public void DecreaseVolumeAroundMin() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(1);
 
         radio.decreaseVolume();
@@ -367,7 +375,6 @@ public class RadioTest {
 
     @Test
     public void DecreaseVolumeMin() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(0);
 
         radio.decreaseVolume();
@@ -380,7 +387,6 @@ public class RadioTest {
 
     @Test
     public void DecreaseVolumeMax() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(100);
 
         radio.decreaseVolume();
